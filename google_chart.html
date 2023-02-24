@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+    // Juan A. Villalpando
+    // kio4.com
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      datos =  window.AppInventor.getWebViewString() ;
+      var array  = JSON.parse(datos);
+
+      function drawChart() {
+      var data = google.visualization.arrayToDataTable(array);
+
+        var options = {
+          title: 'Colores',
+          is3D: true,
+          colors:['red','cyan','yellow','green','magenta','orange'],
+        };
+
+         var chart = new google.visualization.PieChart(document.getElementById('grafico'));        // TARTA
+       // var chart = new google.visualization.LineChart(document.getElementById('grafico'));      // LÍNEA
+      // var chart = new google.visualization.ColumnChart(document.getElementById('grafico'))   // COLUMNAS
+        chart.draw(data, options);
+      } 
+    </script>
+  </head>
+  <body>
+    <div id="grafico" style="width: 500px; height: 200px"></div>
+  </body>
+</html>
